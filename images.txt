@@ -1,0 +1,14 @@
+# file                 unsplash-photo-id                 width
+hero.jpg               1576091160550-2173dba999ef        1920
+about.jpg              1434030216411-0b793f4b4173        1200
+audience-school.jpg    1509062522246-3755977927d7        1200
+audience-students.jpg  1584432810601-6c7f27d2362b        1200
+materials.jpg          1457369804613-52c61a468e7d        1920
+cta.jpg                1505751172876-fa1923c5c528        1600
+biology.jpg            1714844437236-de8ef1c7286f        900
+chemistry.jpg          1532187863486-abf9dbad1b69        900
+russian.jpg            1495446815901-a7297e633e8d        900
+anatomy.jpg            1530210124550-912dc1381cb8        900
+biochemistry.jpg       1628595351029-c2bf17511435        900
+histology.jpg          1526930382372-67bf22c0fce2        900
+physiology.jpg         1618939304347-e91b1f33d2ab        900
