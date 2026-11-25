@@ -284,3 +284,19 @@ td:first-child{font-weight:700;color:var(--forest);width:38%}
   .k-nav{flex-direction:column}
   .k-nav a{max-width:none}
 }
+
+/* ---------- длинные конспекты ---------- */
+.k-toc{background:var(--mint);border-radius:14px;padding:18px 22px;margin-bottom:28px}
+.k-toc b{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--emerald)}
+.k-toc ol{margin:10px 0 0 20px;columns:2;column-gap:32px;font-size:15px}
+.k-toc li{margin-bottom:5px;break-inside:avoid}
+.k-toc a{color:var(--forest)}
+.k-toc a:hover{color:var(--emerald)}
+.k-article h3{scroll-margin-top:90px}
+.k-article h4{font-family:'Manrope',sans-serif;font-size:18px;color:var(--forest);margin:24px 0 10px}
+.k-article .note{margin:22px 0}
+.k-article details.q{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px;background:var(--cream)}
+.k-article details.q summary{cursor:pointer;font-weight:700;color:var(--forest)}
+.k-article details.q[open]{background:#fff;border-color:var(--sage)}
+.k-article details.q p{margin:10px 0 0}
+@media (max-width:900px){.k-toc ol{columns:1}}

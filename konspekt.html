@@ -78,6 +78,15 @@
   var body = document.getElementById('k-body');
   body.innerHTML = t.html;
   body.querySelectorAll('table').forEach(function (tb) { var w = document.createElement('div'); w.className = 'tw'; tb.parentNode.insertBefore(w, tb); w.appendChild(tb); });
+  var words = body.textContent.split(/\s+/).length;
+  document.getElementById('k-count').textContent += ' · ≈ ' + Math.max(1, Math.round(words / 150)) + ' мин чтения';
+  var hs = body.querySelectorAll('h3');
+  if (hs.length >= 4) {
+    var toc = '<b>Содержание</b><ol>';
+    hs.forEach(function (h, i) { h.id = 's' + (i + 1); toc += '<li><a href="#s' + (i + 1) + '">' + h.textContent + '</a></li>'; });
+    var nav0 = document.createElement('nav'); nav0.className = 'k-toc'; nav0.innerHTML = toc + '</ol>';
+    body.insertBefore(nav0, body.firstChild);
+  }
   document.getElementById('k-topics').innerHTML = subj.topics.map(function (x, i) {
     return '<li><a href="konspekt.html?id=' + x.id + '"' + (i === idx ? ' class="current"' : '') + '>' + x.title + '</a></li>';
   }).join('');
