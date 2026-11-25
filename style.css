@@ -246,7 +246,8 @@ td:first-child{font-weight:700;color:var(--forest);width:38%}
 .page-hero.small{padding:130px 0 56px;background:linear-gradient(110deg,rgba(9,45,35,.95),rgba(31,122,90,.78)),url('img/materials.jpg') center/cover}
 .page-hero.small h1{font-size:clamp(28px,4.4vw,48px);margin-bottom:18px}
 .k-section{padding:56px 0 80px}
-.k-layout{display:grid;grid-template-columns:290px 1fr;gap:36px;align-items:start}
+.k-layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:36px;align-items:start}
+.k-layout>*{min-width:0}
 .k-side{position:sticky;top:96px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
 .k-side h4{font-family:'Manrope',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--emerald);margin-bottom:12px}
 .k-side ol{margin:0 0 16px 18px;font-size:15px}
@@ -277,7 +278,7 @@ td:first-child{font-weight:700;color:var(--forest);width:38%}
 .disc ol a:hover{color:var(--emerald);border-bottom-color:var(--emerald)}
 .disc .open-k{margin-top:14px;font-weight:700;font-size:15px}
 @media (max-width:900px){
-  .k-layout{grid-template-columns:1fr}
+  .k-layout{grid-template-columns:minmax(0,1fr)}
   .k-side{position:static;order:2}
   .k-article{padding:26px 20px;font-size:16px}
   .k-nav{flex-direction:column}
