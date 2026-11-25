@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конспект — MedStart</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header solid" id="top">
+  <div class="container nav">
+    <a href="index.html" class="logo"><span class="logo-mark">M</span>MedStart</a>
+    <button class="burger" aria-label="Меню" id="burger">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">О проекте</a></li>
+      <li><a href="materials.html#admission">Поступление</a></li>
+      <li><a href="materials.html#first-year">Первый курс</a></li>
+      <li><a href="index.html#feedback" class="btn-nav">Обратная связь</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="page-hero small">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Главная</a> / <a href="materials.html">Материалы</a> / <a id="k-subject-link" href="materials.html"></a></div>
+    <h1 id="k-title">Конспект</h1>
+    <div class="hero-badges" style="margin:0"><span class="badge" id="k-subject"></span><span class="badge" id="k-count"></span></div>
+  </div>
+</section>
+
+<section class="k-section">
+  <div class="container k-layout">
+    <aside class="k-side">
+      <h4 id="k-side-title">Темы</h4>
+      <ol id="k-topics"></ol>
+      <a class="k-back" href="materials.html">← Все предметы</a>
+    </aside>
+    <div>
+      <article class="k-article" id="k-body"></article>
+      <nav class="k-nav" id="k-nav"></nav>
+      <div class="k-ask">
+        <div><b>Остались вопросы по теме?</b><br>Команда MedStart ответит в течение 24–48 часов.</div>
+        <a href="index.html#feedback" class="btn btn-green">Задать вопрос</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="copy">
+      <span>© 2026 MedStart · Ризаева Я., Пилипчук К., Прошина Д., Улякина К.</span>
+      <a href="#top">Наверх ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script src="konspekty.js"></script>
+<script>
+(function () {
+  var id = new URLSearchParams(location.search).get('id') || 'bio-1';
+  var subj = null, idx = -1;
+  KONSPEKTY.forEach(function (s) { s.topics.forEach(function (t, i) { if (t.id === id) { subj = s; idx = i; } }); });
+  if (!subj) { subj = KONSPEKTY[0]; idx = 0; }
+  var t = subj.topics[idx];
+  document.title = t.title + ' — ' + subj.name + ' — MedStart';
+  document.getElementById('k-title').textContent = t.title;
+  document.getElementById('k-subject').textContent = subj.name;
+  var sl = document.getElementById('k-subject-link');
+  sl.textContent = subj.name; sl.href = 'materials.html#' + subj.block;
+  document.getElementById('k-count').textContent = 'Тема ' + (idx + 1) + ' из ' + subj.topics.length;
+  document.getElementById('k-side-title').textContent = subj.name;
+  var body = document.getElementById('k-body');
+  body.innerHTML = t.html;
+  body.querySelectorAll('table').forEach(function (tb) { var w = document.createElement('div'); w.className = 'tw'; tb.parentNode.insertBefore(w, tb); w.appendChild(tb); });
+  document.getElementById('k-topics').innerHTML = subj.topics.map(function (x, i) {
+    return '<li><a href="konspekt.html?id=' + x.id + '"' + (i === idx ? ' class="current"' : '') + '>' + x.title + '</a></li>';
+  }).join('');
+  var nav = '';
+  if (idx > 0) { var p = subj.topics[idx - 1]; nav += '<a href="konspekt.html?id=' + p.id + '"><small>← Предыдущая тема</small>' + p.title + '</a>'; } else { nav += '<span></span>'; }
+  if (idx < subj.topics.length - 1) { var n = subj.topics[idx + 1]; nav += '<a class="next" href="konspekt.html?id=' + n.id + '"><small>Следующая тема →</small>' + n.title + '</a>'; }
+  document.getElementById('k-nav').innerHTML = nav;
+})();
+</script>
+<script src="main.js"></script>
+</body>
+</html>
